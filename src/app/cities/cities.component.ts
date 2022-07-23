@@ -1,15 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 
 @Component({
   selector: 'app-cities',
-  templateUrl: './cities.component.html',
-  styleUrls: ['./cities.component.scss']
+  template: `<ul>
+      <li
+        (click)="onCityClicked(city)"
+        [ngClass]="{ 'alert alert-info': city === selection }"
+      >
+        {{ city }}
+      </li>
+    </ul>
+    `,
+  styleUrls: ['./cities.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CitiesComponent implements OnInit {
+export class CitiesComponent {
+  @Input() city!: string;
+  @Input() selection!: string;
 
-  constructor() { }
+  @Output() cityClickedEvent = new EventEmitter<string>();
 
-  ngOnInit(): void {
+  onCityClicked(city: string) {
+    this.cityClickedEvent.emit(city);
   }
 
 }

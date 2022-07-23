@@ -2,15 +2,16 @@
   <div class="row">
     <div class="col-md-12 my-3">
       <!-- Acá se está recibiendo del hijo al padre el newItemEvent -->
-      <app-form-new-item (newItemEvent)="addNewCity($event)" [label]="'City'" [className]="'btn-primary'"></app-form-new-item>
+      <app-form-new-item (newItemEvent)="addNewCity($event)" [label]="'City'" [className]="'btn-primary'">
+      </app-form-new-item>
     </div>
     <div class="col-md-8">
       <ul>
-        <li (click)="onCityClicked(city)" *ngFor="let city of cities"
-          [ngClass]="{'alert alert-info': city === selection}">
-          {{city}}</li>
+        <app-cities *ngFor="let city of cities" (cityClickedEvent)="onCityClicked($event)" [city]="city"
+          [selection]="selection"></app-cities>
       </ul>
     </div>
+    <input type="text" (keypress)="onSearch()">
     <div class="col-md-4">
       <div *ngIf="selection">
         <p>Your city is: {{selection}}</p>

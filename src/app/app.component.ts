@@ -11,9 +11,9 @@ export class AppComponent {
   cities = ['Barcelona', 'Madrid', 'Valledupar'];
   selection!: string;
 
-  // En este metodo se recibe finalmente el valor que viene desde el hijo para poder 
+  // En este metodo se recibe finalmente el valor que viene desde el hijo para poder
   // pushearlo al Array de cities
-  addNewCity(city: string):void{
+  addNewCity(city: string): void {
     this.cities.push(city);
   }
 
@@ -25,5 +25,9 @@ export class AppComponent {
 
   onClear(): void {
     this.selection = '';
+  }
+
+  onSearch(): void {
+    console.log('onSearch');
   }
 }
