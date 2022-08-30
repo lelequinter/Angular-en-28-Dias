@@ -9,14 +9,13 @@ import {
 @Component({
   selector: 'app-cities',
   template: `<ul>
-      <li
-        (click)="onCityClicked(city)"
-        [ngClass]="{ 'alert alert-info': city === selection }"
-      >
-        {{ city }}
-      </li>
-    </ul>
-    `,
+    <li
+      (click)="onCityClicked(city)"
+      [ngClass]="{ 'alert alert-info': city === selection }"
+    >
+      {{ city | titlecase }}
+    </li>
+  </ul> `,
   styleUrls: ['./cities.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -29,5 +28,4 @@ export class CitiesComponent {
   onCityClicked(city: string) {
     this.cityClickedEvent.emit(city);
   }
-
 }
