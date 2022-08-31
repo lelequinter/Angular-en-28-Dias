@@ -1,0 +1,46 @@
+<h1>Contact Form</h1>
+<form (ngSubmit)="onSubmit();" [formGroup]="contactForm">
+    <div class="mb-4">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" name="name" required formControlName="name">
+        <div *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.errors?.['required'] "
+            class="alert alert-danger">
+            This field is requiered</div>
+        <div *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.errors?.['minlength'] "
+            class="alert alert-danger">
+            Name must be longer than {{contactForm.get('name')?.errors?.['minlength'].requiredLength}} characters</div>
+    </div>
+    <div class="mb-4 form-check">
+        <label for="checkAdult" class="form-label">Are you over 18 years of age?</label>
+        <input type="checkbox" class="form-check-input" id="checkAdult" name="checkAdult" required
+            formControlName="checkAdult">
+        <div *ngIf="contactForm.get('checkAdult')?.touched && contactForm.get('checkAdult')?.errors?.['required'] "
+            class="alert alert-danger">
+            This field is requiered</div>
+        <!-- <div [hidden]="checkAdult.valid || checkAdult.pristine " class="alert alert-danger">This field is requiered</div> -->
+    </div>
+    <div class="mb-4">
+        <label for="departament" class="form-label">Departament</label>
+        <select name="departament" id="departament" name="departament" class="form-select form-select-sm"
+            formControlName="departament">
+            <option selected>Open this select</option>
+            <option value="marketing">Marketing</option>
+            <option value="sales">Sales</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+    <div class="mb-4">
+        <label for="comment" class="form-label">Comment</label>
+        <textarea class="form-control" placeholder="Leave a comment" name="comment" id="comment" rows="4" required
+            formControlName="comment"></textarea>
+        <div *ngIf="contactForm.get('comment')?.touched && contactForm.get('comment')?.errors?.['required'] "
+            class="alert alert-danger">
+            This field is requiered</div>
+        <!-- <div [hidden]="comment.valid || comment.pristine " class="alert alert-danger">This field is requiered</div> -->
+    </div>
+
+    <div class="d-flex justify-content-end mb-4">
+        <button type="submit" class="btn btn-info btn-lg" [disabled]="contactForm.invalid">Enviar</button>
+    </div>
+
+</form>
