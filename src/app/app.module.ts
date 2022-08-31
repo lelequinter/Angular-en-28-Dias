@@ -7,9 +7,10 @@ import { ButtonComponent } from './button/button.component';
 import { FormNewItemComponent } from './form-new-item/form-new-item.component';
 import { CitiesComponent } from './cities/cities.component';
 import { FilterPipe } from './pipes/filter/filter.pipe';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
-  declarations: [AppComponent, ButtonComponent, FormNewItemComponent, CitiesComponent, FilterPipe],
+  declarations: [AppComponent, ButtonComponent, FormNewItemComponent, CitiesComponent, FilterPipe, ContactComponent],
   imports: [BrowserModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
