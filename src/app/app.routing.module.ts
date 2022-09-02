@@ -16,16 +16,23 @@ const routes: Routes = [
     redirectTo: '/home',
     pathMatch: 'full',
   },
+  // {
+  //   path: 'contact-reactive',
+  //   component: ContactReactiveComponent,
+  //   canDeactivate: [WithoutsaveGuard],
+  //   resolve: {departments: DataResolverService}
+  // },
   {
     path: 'contact-reactive',
-    component: ContactReactiveComponent,
-    canDeactivate: [WithoutsaveGuard],
-    resolve: {departments: DataResolverService}
+    loadChildren: () =>
+      import('./contact-reactive/contact-reactive.module').then(
+        (m) => m.ContactReactiveModule
+      ),
   },
   {
     path: 'contact-template/:id',
     component: ContactComponent,
-    resolve: {departments: DataResolverService}
+    resolve: { departments: DataResolverService },
   },
   {
     path: 'home',
