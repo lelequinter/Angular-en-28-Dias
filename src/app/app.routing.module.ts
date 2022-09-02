@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContactReactiveComponent } from './contact-reactive/contact-reactive.component';
 import { ContactComponent } from './contact/contact.component';
+import { PermissionsGuard } from './guards/permissions.guard';
+import { WithoutsaveGuard } from './guards/withoutsave.guard';
 import { HomeComponent } from './home/home.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { DetailsComponent } from './users/details/details.component';
@@ -16,6 +18,7 @@ const routes: Routes = [
   {
     path: 'contact-reactive',
     component: ContactReactiveComponent,
+    canDeactivate: [WithoutsaveGuard]
   },
   {
     path: 'contact-template/:id',
@@ -28,6 +31,7 @@ const routes: Routes = [
   {
     path: 'users',
     component: UserComponent,
+    canActivate: [PermissionsGuard],
     children: [
       { path: 'list', component: ListComponent },
       { path: 'details', component: DetailsComponent },
