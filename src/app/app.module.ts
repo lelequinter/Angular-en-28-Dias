@@ -12,9 +12,13 @@ import { ContactReactiveComponent } from './contact-reactive/contact-reactive.co
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app.routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { UserComponent } from './users/user/user.component';
+import { DetailsComponent } from './users/details/details.component';
+import { ListComponent } from './users/list/list.component';
 
 @NgModule({
-  declarations: [AppComponent, ButtonComponent, FormNewItemComponent, CitiesComponent, FilterPipe, ContactComponent, ContactReactiveComponent, HomeComponent, NavbarComponent],
+  declarations: [AppComponent, ButtonComponent, FormNewItemComponent, CitiesComponent, FilterPipe, ContactComponent, ContactReactiveComponent, HomeComponent, NavbarComponent, PagenotfoundComponent, UserComponent, DetailsComponent, ListComponent],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],

@@ -11,10 +11,16 @@
           <a class="nav-link" routerLinkActive="active" routerLink="/home">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="/contact-reactive">Reactivo</a>
+          <a class="nav-link" routerLinkActive="active" (click)="goToReactive();">Reactivo</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/contact-template">Template-Driven</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" (click)="goToTemplate()">Template-Driven</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="/contact-template">Template-Driven</a>
+          <a class="nav-link" routerLinkActive="active"  routerLink="/users">Users</a>
         </li>
       </ul>
     </div>
