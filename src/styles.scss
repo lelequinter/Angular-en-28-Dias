@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+ul{
+  list-style-type: none;
+}
+
+.overlay{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #353535;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+}
