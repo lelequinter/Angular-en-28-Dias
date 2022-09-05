@@ -19,6 +19,7 @@ import { ListComponent } from './users/list/list.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { SpinnerInterceptor } from './shared/spinner/spinner.interceptor';
+import { CardComponent } from './card/card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +35,7 @@ import { SpinnerInterceptor } from './shared/spinner/spinner.interceptor';
     PagenotfoundComponent,
     UserComponent,
     SpinnerComponent,
+    CardComponent,
   ],
   imports: [
     BrowserModule,
