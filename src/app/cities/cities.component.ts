@@ -36,6 +36,6 @@ export class CitiesComponent {
   }
 
   onCityDelete(id: string): void{
-    this.cityDeleteEvent.emit(id)
+    this.cityDeleteEvent.emit(id);
   }
 }
