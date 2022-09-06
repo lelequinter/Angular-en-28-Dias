@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   selection!: City;
   criteria = '';
 
-  constructor(private readonly dataSVc: DataService) {}
+  constructor(private readonly dataSvc: DataService) {}
 
   // ngAfterViewInit(): void {
   //   this.filterInput.valueChanges?.subscribe((res) => {
@@ -26,7 +26,9 @@ export class HomeComponent implements OnInit {
   // }
 
   ngOnInit(): void {
-    this.dataSVc.getCities().subscribe((cities) => {
+    this.dataSvc.selectedCity$.subscribe((city) => this.selection = city)
+
+    this.dataSvc.getCities().subscribe((cities) => {
       this.cities = [...cities];
     });
   }
@@ -38,7 +40,7 @@ export class HomeComponent implements OnInit {
   // En este metodo se recibe finalmente el valor que viene desde el hijo para poder
   // pushearlo al Array de cities
   updateCity(city: City): void {
-    this.dataSVc.updateCity(city).subscribe((res) => {
+    this.dataSvc.updateCity(city).subscribe((res) => {
       const tempArr = this.cities.filter((item) => item._id !== city._id);
       this.cities = [...tempArr, city];
       this.onClear();
@@ -46,7 +48,7 @@ export class HomeComponent implements OnInit {
   }
 
   addNewCity(city: string): void {
-    this.dataSVc.addNewCity(city).subscribe((res) => {
+    this.dataSvc.addNewCity(city).subscribe((res) => {
       this.cities.push(res);
     });
   }
@@ -54,13 +56,14 @@ export class HomeComponent implements OnInit {
   onCitySelected(city: City): void {
     // console.log('Ciudad ->', city);
     // Para setear el valor de la propiedad que queremos usamos el:
-    this.selection = city;
+    // this.selection = city;
+    this.dataSvc.setCity(city);
   }
 
   onCityDelete(id: string): void {
     // console.log(id);
     if (confirm('Are you sure?')) {
-      this.dataSVc.deleteCity(id).subscribe(() => {
+      this.dataSvc.deleteCity(id).subscribe(() => {
         const tempArr = this.cities.filter((city) => city._id !== id);
         this.cities = [...tempArr];
         this.onClear();
